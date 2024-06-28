@@ -54,8 +54,7 @@ border: solid 5px white;
   height: 100px;
   margin-top: -5%;
   margin-left: -5%;
-  /* border-bottom: solid 5px white; */
-/* padding-bottom: 15px; */
+  padding: .3em;
 }
 
 .box.trans {
