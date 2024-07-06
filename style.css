@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:300,400,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:300,400,500&display=swap");
 /* https://fonts.googleapis.com/css?family=Roboto */
 * {
   margin: 0;
@@ -7,15 +7,29 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Mono";
+}
+body a {
+  text-decoration: none;
+}
+
+body a:hover {
+  font-size: larger;
+  color: #fff;
+}
+
+body a:visited {
+  font-size: large;
+  color: #fff;
 }
 
 .c {
-margin: 2em;
+/* margin: 2em; */
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+min-height: 100vh;
 }
 .veleb {
 position: absolute;
@@ -54,6 +68,7 @@ border: solid 5px white;
   margin-top: -5%;
   margin-left: -5%;
   padding: .3em;
+cursor: pointer;
 }
 
 .box.trans {
@@ -64,7 +79,8 @@ padding: 0.5rem;
 }
 
 .title {
-    position: absolute;
+font-family: "Roboto", sans-serif;
+  position: absolute;
     bottom: 35.9%;
     left: 3.5%;
     font-size: 6.7rem;
@@ -74,6 +90,22 @@ padding: 0.5rem;
     z-index: 5;
 }
 
+.pjat {
+  width: 500px;
+  height: 500px;
+  background-color: #fff;
+border: solid 1px #000;
+  cursor: pointer;
+}
 
+.dlogici {
+  display: flex;
+  flex-direction: row;
+}
 
-
+.fut {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -25px;
+}
