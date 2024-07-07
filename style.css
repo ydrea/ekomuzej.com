@@ -31,6 +31,11 @@ align-items: center;
 justify-content: center;
 min-height: 100vh;
 }
+
+.txt {
+  display: block;
+  margin: 2em;
+}
 .veleb {
 position: absolute;
 top: 40%;
