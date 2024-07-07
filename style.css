@@ -35,6 +35,7 @@ min-height: 100vh;
 .txt {
   display: block;
   margin: 2em;
+  text-align: center;
 }
 .veleb {
 position: absolute;
