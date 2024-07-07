@@ -37,6 +37,11 @@ min-height: 100vh;
   margin: 2em;
   text-align: center;
 }
+
+h2 {
+  margin-bottom: 1em;
+}
+
 .veleb {
 position: absolute;
 top: 40%;
