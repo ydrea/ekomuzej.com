@@ -35,7 +35,10 @@ min-height: 100vh;
 .txt {
   display: block;
   margin: 4em;
-  text-align: center;
+  text-align: left;
+}
+.txt li {
+  list-style-type:none;
 }
 
 h2 {
@@ -115,7 +118,9 @@ border: solid 1px #000;
 
 .dlogici {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
+margin-top: 1em;
 }
 
 /* .fut {
@@ -139,7 +144,7 @@ border: solid 1px #000;
   display: none;
 }
 .pjat {
-  width: min-content;
+  width: 300px;
 }
 .container div {
   /* aspect-ratio: ; */
