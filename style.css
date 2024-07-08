@@ -123,12 +123,13 @@ border: solid 1px #000;
 margin-top: 1em;
 }
 
-/* .fut {
+.icon-w {
+  filter: invert(99%) sepia(2%) saturate(49%) hue-rotate(341deg) brightness(117%) contrast(100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -25px;
-} */
+  margin-top: 3px;
+}
 @media screen and (width < 488px)
   {
     .title {
