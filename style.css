@@ -95,7 +95,8 @@ padding: 0.5rem;
 .title {
 font-family: "Roboto", sans-serif;
   position: absolute;
-    bottom: 35.9%;
+  display: flex; 
+  bottom: 35.9%;
     left: 3.5%;
     font-size: 6.7rem;
     font-weight: 400;
@@ -117,9 +118,31 @@ border: solid 1px #000;
   flex-direction: row;
 }
 
-.fut {
+/* .fut {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: -25px;
+} */
+@media screen and (width < 488px)
+  {
+    .title {
+      font-size: 4rem;
+      color: orange;
+    }
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  /* grid-template-rows: repeat(5, 100px); */
 }
+.veleb {
+  display: none;
+}
+.pjat {
+  width: min-content;
+}
+.container div {
+  /* aspect-ratio: ; */
+}
+
+  }
