@@ -70,6 +70,7 @@ display: block;
   font-size: 1rem;
   z-index: 2;
 border: solid 5px white;
+position: relative;
 }
 
 .box.green {
@@ -80,6 +81,14 @@ border: solid 5px white;
   margin-left: -5%;
   padding: .3em;
 cursor: pointer;
+display: none;
+position: absolute;
+top: 0; left: 0;
+z-index: 3;
+}
+
+.box.green.visible {
+  display: block;
 }
 
 .box.trans {

@@ -36,19 +36,30 @@
         <p class="title">Ekomuzej</p>
         <div class="veleb">
             <img src="velebit_z.jpg" height="300">
-        </div>                       
-            <div class="box" hx-get="./plates/zel11.html" hx-trigger="mouseenter once">start &#x27A1;</div>
-            <div class="box" hx-get="./plates/zel12.html" hx-trigger="mouseenter once"></div>
-            <div class="box" hx-get="./plates/zel13.html" hx-trigger="mouseenter once"></div>
-            <div class="box" hx-get="./plates/zel14.html" hx-trigger="mouseenter once"></div>
-            <div class="box" hx-get="./plates/zel15.html" hx-trigger="mouseenter once"></div>
-            <div class="box" hx-get="./plates/zel21.html" hx-trigger="mouseenter once"></div>
-            <div class="box" hx-get="./plates/zel22.html" hx-trigger="mouseenter once"></div>
-            <div class="box" hx-get="./plates/zel23.html" hx-trigger="mouseenter once"></div>
-            <div class="box" hx-get="./plates/zel24.html" hx-trigger="mouseenter once"></div>
-            <div class="box" hx-get="./plates/zel25.html" hx-trigger="mouseenter once"></div>
-            <div class="box" hx-get="./plates/tr55.html" hx-trigger="mouseenter once" hx-swap="outerHTML"></div>
-            <div class="box" hx-get="./plates/tr55.html" hx-trigger="mouseenter once" hx-swap="outerHTML"></div>
+        </div>                                  
+         <div class="box" hx-get="./plates/zel11.html" hx-trigger="mouseenter once" hx-target="#zel11" hx-swap="innerHTML" data-target-id="zel11">start &#x27A1;
+        <div id="zel11" class="box green"></div></div>
+        <div class="box" hx-get="./plates/zel12.html" hx-trigger="mouseenter once" hx-target="#zel12" hx-swap="innerHTML" data-target-id="zel12">
+        <div id="zel12" class="box green"></div></div>
+        <div class="box" hx-get="./plates/zel13.html" hx-trigger="mouseenter once" hx-target="#zel13" hx-swap="innerHTML" data-target-id="zel13"></div>
+        <div id="zel13" class="box green"></div>
+        <div class="box" hx-get="./plates/zel14.html" hx-trigger="mouseenter once" hx-target="#zel14" hx-swap="innerHTML" data-target-id="zel14"></div>
+        <div id="zel14" class="box green"></div>
+        <div class="box" hx-get="./plates/zel15.html" hx-trigger="mouseenter once" hx-target="#zel15" hx-swap="innerHTML" data-target-id="zel15"></div>
+        <div id="zel15" class="box green"></div>
+        <div class="box" hx-get="./plates/zel21.html" hx-trigger="mouseenter once" hx-target="#zel21" hx-swap="innerHTML" data-target-id="zel21"></div>
+        <div id="zel21" class="box green"></div>
+        <div class="box" hx-get="./plates/zel22.html" hx-trigger="mouseenter once" hx-target="#zel22" hx-swap="innerHTML" data-target-id="zel22"></div>
+        <div id="zel22" class="box green"></div>
+        <div class="box" hx-get="./plates/zel23.html" hx-trigger="mouseenter once" hx-target="#zel23" hx-swap="innerHTML" data-target-id="zel23"></div>
+        <div id="zel23" class="box green"></div>
+        <div class="box" hx-get="./plates/zel24.html" hx-trigger="mouseenter once" hx-target="#zel24" hx-swap="innerHTML" data-target-id="zel24"></div>
+        <div id="zel24" class="box green"></div>
+        <div class="box" hx-get="./plates/zel25.html" hx-trigger="mouseenter once" hx-target="#zel25" hx-swap="innerHTML" data-target-id="zel25"></div>
+        <div id="zel25" class="box green"></div>
+        <div class="box" hx-get="./plates/tr55.html" hx-trigger="mouseenter once" hx-target="#tr55" hx-swap="innerHTML" data-target-id="tr55"></div>
+        <div id="tr55" class="box green"></div>    
+        <div class="box" hx-get="./plates/tr55.html" hx-trigger="mouseenter once" hx-swap="outerHTML"></div>
             <div class="box" hx-get="./plates/tr55.html" hx-trigger="mouseenter once" hx-swap="outerHTML"></div>
             <div class="box" hx-get="./plates/tr55.html" hx-trigger="mouseenter once" hx-swap="outerHTML"></div>
             <div class="box" hx-get="./plates/tr55.html" hx-trigger="mouseenter once" hx-swap="outerHTML"></div>
@@ -69,6 +80,26 @@
         <p>cookies & &#x2117; </p>
     </div> -->
  </footer>
+ <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const boxes = document.querySelectorAll(".box");
 
+        boxes.forEach(box => {
+            box.addEventListener("mouseenter", function () {
+                const targetId = this.getAttribute("data-target-id");
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.classList.add("visible");
+                }
+            });
+       
+            box.addEventListener("click", function () {
+                    const pjat = document.querySelector(".pjat");
+                    if (pjat) {
+                        pjat.style.display = 'block';
+                    }
+                });      });
+    });
+</script>
 </body>
 </html>
