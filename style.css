@@ -38,7 +38,9 @@ min-height: 100vh;
   text-align: left;
 }
 .txt li {
-  list-style-type:none;
+  list-style-type: square;
+
+  list-style-position: inside;
 }
 
 h2 {
@@ -147,8 +149,10 @@ margin-top: 1em;
 .pjat {
   width: 300px;
 }
-.container div {
-  /* aspect-ratio: ; */
+.txt {
+  display: block;
+  margin: 2em;
+  text-align: left;
 }
 
   }
