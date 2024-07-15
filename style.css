@@ -13,15 +13,15 @@ body a {
   text-decoration: none;
 }
 
-body a:hover {
+/* body a:hover {
   font-size: larger;
   color: #fff;
-}
+} */
 
-body a:visited {
+/* body a:visited {
   font-size: large;
   color: #fff;
-}
+} */
 
 .c {
 /* margin: 2em; */
@@ -36,6 +36,7 @@ min-height: 100vh;
   display: block;
   margin: 4em;
   text-align: left;
+color: #148614;
 }
 .txt li {
   list-style-type: square;
@@ -112,19 +113,23 @@ font-family: "Roboto", sans-serif;
 
 .pjat {
   width: 500px;
-  height: 500px;
+  max-height: 500px !important;
   background-color: #fff;
-border: solid 1px #000;
+border: solid 3px rgb(20, 134, 20);
   cursor: pointer;
 }
 
 .dlogici {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   justify-content: center;
-margin-top: 1em;
+/* margin-top: 1em; */
 }
+.icon-g {
+  /* background-image: ; */
+filter: invert(15%) sepia(93%) saturate(5846%) hue-rotate(127deg) brightness(105%) contrast(84%);
 
+}
 .icon-w {
   filter: invert(99%) sepia(2%) saturate(49%) hue-rotate(341deg) brightness(117%) contrast(100%);
   display: flex;
