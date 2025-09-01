@@ -71,7 +71,7 @@ display: block;
 }
 
 .box {
-  background-color: #285FC3;
+  background-color: transparent;
   color: #fff;
   font-size: 1rem;
   z-index: 2;
