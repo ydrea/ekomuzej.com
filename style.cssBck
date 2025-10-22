@@ -1,28 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:300,400,500,600&display=swap");
 /* https://fonts.googleapis.com/css?family=Roboto */
-
-:root {
-  /* Color Variables */
-  --bg-color: #f5f5f5;
-  --text-color: #333;
-  --primary-color: #1e40af;
-  --accent-color: #148614;
-  --modal-bg: white;
-  --border-color: #ccc;
-  --white: #fff;
-  --accent-dark: rgb(20, 134, 20);
-  --orange: orange;
-}
-
-[data-theme="dark"] {
-  --bg-color: #3A514B;
-  --text-color: #fff;
-  --primary-color: #3b82f6;
-  --accent-color: #10b981;
-  --modal-bg: #2d2d2d;
-  --border-color: #444;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -31,14 +8,13 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: var(--bg-color);
+  background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   overflow: hidden;
-  color: var(--text-color);
 }
 
 body a {
@@ -60,7 +36,7 @@ body a {
   display: block;
   margin: 4em;
   text-align: left;
-  color: var(--accent-color);
+  color: #148614;
 }
 .txt li {
   list-style-type: square;
@@ -90,7 +66,7 @@ h2 {
   z-index: 2;
   width: 500px;
   height: 500px;
-  border: 1px solid var(--border-color);
+  border: 1px solid #ccc;
 }
 
 .container div {
@@ -98,11 +74,11 @@ h2 {
 }
 
 .box {
-  background-color: var(--primary-color);
-  color: var(--white);
+  background-color: #1e40af;
+  color: #fff;
   font-size: 1rem;
   z-index: 2;
-  border: solid 5px var(--white);
+  border: solid 5px white;
   padding: 0.1em;
   width: 100px;
   height: 100px;
@@ -110,7 +86,7 @@ h2 {
 }
 
 .box.green {
-  background-color: var(--accent-dark);
+  background-color: rgb(20, 134, 20);
   padding: 0.3em;
   cursor: pointer;
   font-weight: 600;
@@ -134,7 +110,7 @@ h2 {
   left: 3.5%;
   font-size: 6.7rem;
   font-weight: 400;
-  color: var(--white);
+  color: #fff;
   pointer-events: none;
   z-index: 5;
 }
@@ -147,9 +123,9 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--modal-bg);
+  background: white;
   z-index: 100;
-  border: 1px solid var(--accent-dark);
+  border: 1px solid rgb(20, 134, 20);
 }
 
 .modal.active {
@@ -157,7 +133,7 @@ h2 {
 }
 
 .modal-content {
-  background: var(--modal-bg);
+  background: white;
   padding: 2rem;
   width: 100%;
   height: 100%;
@@ -173,7 +149,7 @@ h2 {
   cursor: pointer;
   background: none;
   border: none;
-  color: var(--accent-color);
+  color: #148614;
   z-index: 101;
 }
 
@@ -194,7 +170,7 @@ h2 {
 }
 
 .pjat {
-  color: var(--accent-color);
+  color: #148614;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -224,7 +200,7 @@ h2 {
 
 .fut {
   margin-top: 20px;
-  color: var(--accent-color);
+  color: #148614;
 }
 
 .icon-g {
@@ -249,7 +225,7 @@ h2 {
 
   .title {
     font-size: 4rem;
-    color: var(--orange);
+    color: orange;
   }
 
   .veleb {
@@ -290,4 +266,39 @@ h2 {
     margin: 2em;
     text-align: left;
   }
+
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --primary-color: #1e40af;
+  --accent-color: #3A514B;
+  --modal-bg: white;
+  --border-color: #ccc;
+}
+
+[data-theme="dark"] {
+  --bg-color: #3A514B;
+  --text-color: #fff;
+  --primary-color: #3b82f6;
+  --accent-color: #10b981;
+  --modal-bg: #2d2d2d;
+  --border-color: #444;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.box {
+  background-color: var(--primary-color);
+}
+
+.box.green {
+  background-color: var(--accent-color);
+}
+
+.modal-content {
+  background: var(--modal-bg);
+}
 }
