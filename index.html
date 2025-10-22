@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ekomuzej - web i mobilne aplikacije</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="//unpkg.com/alpinejs" defer></script>
   </head>
   <body>
@@ -86,9 +86,9 @@
           contentBoxes: [
             { title: "o ekomuzeju", pjat: "o_ekomuzeju", revealed: false },
             { title: "mobilne aplikacije", pjat: "mobilne_app", revealed: false },
-            { title: "X/twitter", url: "https://twitter.com/yourprofile", revealed: false },
-            { title: "facebook", url: "https://facebook.com/yourpage", revealed: false },
-            { title: "instagram", url: "https://instagram.com/yourprofile", revealed: false },
+            { title: "društvene mreže", pjat: "socials", revealed: false },
+            { title: "jezici", pjat: "languages", revealed: false },
+            { title: "teme", pjat: "theme", revealed: false },
             { title: "o nama", pjat: "onama", revealed: false },
             { title: "DEMO", pjat: "demo", revealed: false },
             { title: "ponuda", pjat: "ponuda", revealed: false },
@@ -104,7 +104,7 @@
 
             // If it has a URL, open it directly
             if (box.url) {
-              window.open(box.url, '_blank');
+              window.open(box.url, "_blank");
               return;
             }
 
@@ -137,6 +137,30 @@
                   <p>Naše mobilne aplikacije izrađene su u <i>state-of-the art</i> tehnologijama, koje posjetiocima pružaju užitak korištenja, kako u <i>online</i>, tako i u <i>offline</i> režimu rada.</p>
                 </div>
               `,
+              socials: `
+                <div class="pjat">
+                  <h2>društvene mreže</h2>
+                <p><a href=>X/Twitter</a></p>
+                <p><a href=>facebook</a></p>
+                <p><a href=>instagram</a></p>
+                 </div>
+              `,
+              languages: `
+                <div class="pjat">
+                  <h2>jezici</h2>
+                <p>HR</p>
+                <p>EN</p>
+                <p>IT</p>
+                 </div>
+              `,
+              theme: `
+                <div class="pjat">
+                  <h2>teme</h2>
+                <p>dark</p>
+                <p>light</p>
+                 </div>
+              `,
+
               onama: `
                 <div class="pjat">
                   <h2>O nama</h2>
