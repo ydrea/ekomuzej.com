@@ -421,3 +421,96 @@
     </script>
   </body>
 </html>
+
+
+          getPjatContent(box) {
+            const contents = {
+              o_ekomuzeju: `
+                <div class="pjat">
+                  <h2>o ekomuzeju</h2>
+                  <p>ekomuzej je model interpretacije baštine - prirodne, kao i materijalne i nematerijalne kulturna baština</p>
+                  <p>Osnovne karakteristike ekomuzeja su:</p>
+                  <ul>
+                    <li>pokrivaju područje koje se pruža izvan zidova;</li>
+                    <li>fragmentirana lokacija i interpretacija na licu mjesta;</li>
+                    <li>suradnja i partnerstvo, umjesto vlasništva nad izložbama ili kolekcijama;</li>
+                    <li>uključenost lokalne zajednice u aktivnosti muzeja;</li>
+                    <li>holistička, interdisciplinarna interpretacija.</li>
+                  </ul>
+                </div>
+              `,
+              mobilne_app: `
+                <div class="pjat">
+                  <h2>mobilne aplikacije</h2>
+                  <p>U današnjem svijetu, mobilne aplikacije su sveprisutne, a u kontekstu ekomuzeja mogu imati značajnu ulogu, kako u navigaciji posjetitelja, tako i u interpretaciji muzejske građe.</p>
+                  <p>Naše mobilne aplikacije izrađene su u <i>state-of-the art</i> tehnologijama, koje posjetiocima pružaju užitak korištenja, kako u <i>online</i>, tako i u <i>offline</i> režimu rada.</p>
+                </div>
+              `,
+              socials: `
+                <div class="pjat">
+                  <h2>društvene mreže</h2>
+                <p><a href=>X/Twitter</a></p>
+                <p><a href=>facebook</a></p>
+                <p><a href=>instagram</a></p>
+                 </div>
+              `,
+              languages: `
+                <div class="pjat">
+                  <h2>jezici</h2>
+                <p>HR</p>
+                <p>EN</p>
+                <p>IT</p>
+                 </div>
+              `,
+
+              onama: `
+                <div class="pjat">
+                  <h2>O nama</h2>
+                  <p>Mjesto i vrijeme</p>
+                  <p>Plavi peristil</p>
+                </div>
+              `,
+              demo: `
+                <div class="pjat">
+                  <h2>[DEMO] Zagrebački spomenici</h2>
+                  <p>Ovdje možete besplatno preuzeti edukativnu igru <strong>Zagrebački spomenici</strong>, koja ilustrira jedan od mogućih scenarija korištenja mobilne aplikacije u oblikovanju ekomuzeja.</p>
+                  <p>Demo aplikacija je dostupna za <i>Android</i> platformu.</p>
+                  <div class="dlogici">
+                    <a href="jesiJEA.apk" download="demo.apk">
+                      <img src="icon/Android_logo.png" width="140" alt="Android_logo">
+                    </a>
+                  </div>
+                </div>
+              `,
+              ponuda: `
+                <div class="pjat">
+                  <h2>ponuda</h2>
+                <p>digitalizacija sadržaja</p>
+                <p>web applikacije</p>
+                <p>mobilne aplikacije</p>
+                 </div>
+              `,
+              reference: `
+                <div class="pjat">
+                  <h2>reference</h2>
+                <p>općina Moščenička draga</p>
+                </div>
+              `,
+
+              kontakt: `
+                <div class="pjat">
+                  <h2>kontakt</h2>
+                  <p>Plavi peristil d.o.o.</p>
+                  <p>Tratinska 80a</p>
+                  <p>10 000 Zagreb</p>
+                  <p>ekomuzej11@gmail.com</p>
+                </div>
+              `,
+
+              default: `
+                <div class="pjat">
+                  <h2>${box.title}</h2>
+                  <p>Gallia est omnis divisa in partes tres</p>
+                </div>
+              `,
+            };
