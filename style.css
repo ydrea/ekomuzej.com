@@ -15,7 +15,7 @@
 }
 
 [data-theme="dark"] {
-  --bg-color: #3A514B;
+  --bg-color: #333;
   --text-color: #fff;
   --primary-color: #3b82f6;
   --accent-color: #10b981;
@@ -74,6 +74,7 @@ h2 {
 .veleb {
   position: absolute;
   top: 40%;
+  left: .5%;
   z-index: 0;
 }
 .veleb img {
