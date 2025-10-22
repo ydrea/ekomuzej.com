@@ -23,7 +23,10 @@
           >
             <span
               x-show="box.revealed"
-              x-text="box.dynamicTitle ? currentTheme : box.title"
+              x-text="box.dynamicTitle ? 
+    (box.pjat === 'languages' ? currentLanguage : 
+    (currentTheme === 'light' ? themeNames?.light : themeNames?.dark)) 
+    : box.title"
             ></span>
           </div>
         </template>
@@ -86,6 +89,16 @@
       function app() {
         return {
           currentTheme: "light",
+          currentLanguage: "hr",
+          themeNames: { light: "svijetla", dark: "tamna" },
+
+          init() {
+            this.updateBoxTitles();
+            document.documentElement.setAttribute(
+              "data-theme",
+              this.currentTheme
+            );
+          },
 
           toggleTheme() {
             this.currentTheme =
@@ -96,28 +109,99 @@
             );
           },
 
+          cycleLanguage() {
+            const languages = ["hr", "en", "it"];
+            const currentIndex = languages.indexOf(this.currentLanguage);
+            const nextIndex = (currentIndex + 1) % languages.length;
+            this.currentLanguage = languages[nextIndex];
+            this.updateBoxTitles();
+          },
+
+          updateBoxTitles() {
+            const languageTitles = {
+              hr: [
+                "o ekomuzeju",
+                "mobilne aplikacije",
+                "društvene mreže",
+                "jezici",
+                "teme",
+                "o nama",
+                "DEMO",
+                "ponuda",
+                "reference",
+                "kontakt",
+              ],
+              en: [
+                "about ecomuseum",
+                "mobile apps",
+                "social networks",
+                "languages",
+                "themes",
+                "about us",
+                "DEMO",
+                "offer",
+                "references",
+                "contact",
+              ],
+              it: [
+                "sull'eco-museo",
+                "app mobili",
+                "social network",
+                "lingue",
+                "temi",
+                "chi siamo",
+                "DEMO",
+                "offerta",
+                "referenze",
+                "contatto",
+              ],
+            };
+
+            const themeNames = {
+              hr: { light: "svijetla", dark: "tamna" },
+              en: { light: "light", dark: "dark" },
+              it: { light: "chiara", dark: "scura" },
+            };
+
+            const titles = languageTitles[this.currentLanguage];
+
+            this.contentBoxes.forEach((box, index) => {
+              if (!box.dynamicTitle) {
+                box.title = titles[index];
+              }
+            });
+
+            // Update the current theme name for display
+            this.themeNames = themeNames[this.currentLanguage];
+          },
           boxHasAction(box) {
             return box && typeof box.action === "function";
           },
 
           //prettier-ignore
           contentBoxes: [
-            { title: "o ekomuzeju", pjat: "o_ekomuzeju", revealed: false },
-            { title: "mobilne aplikacije", pjat: "mobilne_app", revealed: false },
-            { title: "društvene mreže", pjat: "socials", revealed: false },
-            { title: "jezici", pjat: "languages", revealed: false },
-            { 
-              title: "teme", 
-              action: (component) => component.toggleTheme(), 
-              revealed: false,
-              dynamicTitle: true 
-            },
-            { title: "o nama", pjat: "o_nama", revealed: false },
-            { title: "DEMO", pjat: "demo", revealed: false },
-            { title: "ponuda", pjat: "ponuda", revealed: false },
-            { title: "reference", pjat: "reference", revealed: false },
-            { title: "kontakt", pjat: "kontakt", revealed: false },
-          ],
+      { title: "o ekomuzeju", pjat: "o_ekomuzeju", revealed: false },
+      { title: "mobilne aplikacije", pjat: "mobilne_app", revealed: false },
+      { title: "društvene mreže", pjat: "socials", revealed: false },
+      { 
+        title: "jezici", 
+        action: (component) => component.cycleLanguage(), 
+        revealed: false,
+        dynamicTitle: true,
+        pjat: "languages"
+      },
+      { 
+        title: "teme", 
+        action: (component) => component.toggleTheme(), 
+        revealed: false,
+        dynamicTitle: true 
+      },
+      { title: "o nama", pjat: "onama", revealed: false },
+      { title: "DEMO", pjat: "demo", revealed: false },
+      { title: "ponuda", pjat: "ponuda", revealed: false },
+      { title: "reference", pjat: "reference", revealed: false },
+      { title: "kontakt", pjat: "kontakt", revealed: false },
+    ],
           transparentBoxes: Array(15)
             .fill()
             .map(() => ({ revealed: false })),
@@ -133,7 +217,9 @@
 
           async getPjatContent(box) {
             try {
-              const response = await fetch(`pjat/${box.pjat}.html`);
+              const response = await fetch(
+                `pjat/${this.currentLanguage}/${box.pjat}.html`
+              );
               if (!response.ok) {
                 throw new Error("File not found");
               }
@@ -141,11 +227,11 @@
             } catch (error) {
               console.error("Error loading content:", error);
               return `
-                <div class="pjat">
-                  <h2>${box.title}</h2>
-                  <p>Content not available</p>
-                </div>
-              `;
+          <div class="pjat">
+            <h2>${box.title}</h2>
+            <p>Content not available in ${this.currentLanguage}</p>
+          </div>
+        `;
             }
           },
         };
