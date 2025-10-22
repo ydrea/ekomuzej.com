@@ -103,7 +103,7 @@
         z-index: 5;
       }
 
-      /* Modal covers the container */
+      /* Fixed Modal styles - NOW INSIDE CONTAINER */
       .modal {
         display: none;
         position: absolute;
@@ -127,6 +127,7 @@
         height: 100%;
         overflow-y: auto;
         position: relative;
+        z-index: 102;
       }
 
       .close-modal {
@@ -141,7 +142,7 @@
         z-index: 101;
       }
 
-      /* Overlay covers the rest of the page */
+      /* Add overlay behind modal for clicking outside */
       .modal-overlay {
         display: none;
         position: fixed;
@@ -150,7 +151,7 @@
         width: 100vw;
         height: 100vh;
         background: rgba(255, 255, 255, 0.5);
-        z-index: 99; /* Below modal but above everything else */
+        z-index: 99; /* Keep this at 99 */
       }
       .modal-overlay.active {
         display: block;
@@ -239,7 +240,7 @@
     </style>
   </head>
   <body>
-    <!-- Overlay for clicking outside modal - COVERS REST OF PAGE -->
+    <!-- Overlay for clicking outside modal -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
 
     <div class="c" id="top">
@@ -271,7 +272,7 @@
         </div>
         <h1 class="title">Ekomuzej</h1>
 
-        <!-- Modal - COVERS CONTAINER -->
+        <!-- MODAL INSIDE THE CONTAINER -->
         <div id="pjatModal" class="modal">
           <div class="modal-content">
             <button class="close-modal" onclick="closeModal()">×</button>
