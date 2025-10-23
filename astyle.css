@@ -2,22 +2,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
 :root {
-  --bg-color: #f5f5f5;
-  --text-color: #333;
+  --bg-color: #f6f9f9;
+  --text-color: #0d1200;
   --primary-color: #1e40af;
-  --accent-color: #148614;
-  --modal-bg: white;
+  --accent-color: #065f46;
+  --modal-bg: #cce3fc;
   --border-color: #ccc;
   --white: #fff;
-  --accent-dark: rgb(20, 134, 20);
+  --accent-dark: #065f46;
 }
 
 [data-theme="dark"] {
-  --bg-color: #1f2937;
+  --bg-color: #141d00;
   --text-color: #f9fafb;
   --primary-color: #374151;
-  --accent-color: #10b981;
-  --modal-bg: #374151;
+  --accent-color: #A6831D;
+  --modal-bg: #222a37;
   --border-color: #4b5563;
   --white: #f9fafb;
   --accent-dark: #065f46;
@@ -114,12 +114,12 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--primary-color);
-  color: var(--white);
+  background-color: var(--bg-color);
+  color: var(--text-color);
   border-radius: 2px;
   /* Combined border: 1px white inner + 3px bg outer */
   /* border: 1px solid var(--white); */
-  outline: 1px solid var(--white);
+  outline: 1px solid var(--text-color);
   outline-offset: -2px; /* This makes the outline sit inside */
   font-size: 1.05rem;
   transition: transform 0.25s ease, opacity 0.3s ease, background-color 0.25s ease;
@@ -147,7 +147,7 @@ h1 {
 
 /* Green actionable boxes */
 .box.green {
-  background-color: var(--accent-dark);
+  /* background-color: var(--white); */
   font-weight: 600;
   cursor: pointer;
 }
