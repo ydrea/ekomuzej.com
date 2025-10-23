@@ -249,21 +249,121 @@ body {
   color: var(--accent-color);
 }
 
-/* Responsive adjustments: scale grid down and keep center overlay */
-@media (max-width: 640px) {
-  .grid-wrapper { width: 360px; height: 360px; }
-  .grid { grid-template-columns: repeat(5, calc(360px / 5)); grid-template-rows: repeat(5, calc(360px / 5)); gap:6px; }
-  .veleb { top: calc(360px / 5); height: calc((360px / 5) * 3); }
-  .title { font-size: 3.2rem; top: calc(360px / 2); }
+/* Tablet adjustments */
+@media (max-width: 768px) {
+  .grid-wrapper { 
+    width: 450px; 
+    height: 450px; 
+  }
+  .grid { 
+    grid-template-columns: repeat(5, 90px); 
+    grid-template-rows: repeat(5, 90px); 
+    width: 450px;
+    height: 450px;
+  }
+  .veleb { 
+    top: 90px; 
+    height: 270px; 
+  }
+  .title { 
+    font-size: 5.5rem; 
+    top: 225px; 
+  }
+  .modal {
+    width: 450px;
+    height: 450px;
+  }
 }
 
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  .grid-wrapper { 
+    width: 400px; 
+    height: 400px; 
+  }
+  .grid { 
+    grid-template-columns: repeat(5, 80px); 
+    grid-template-rows: repeat(5, 80px); 
+    width: 400px;
+    height: 400px;
+  }
+  .veleb { 
+    top: 80px; 
+    height: 240px; 
+  }
+  .title { 
+    font-size: 4.8rem; 
+    top: 200px; 
+  }
+  .modal {
+    width: 400px;
+    height: 400px;
+  }
+  .modal-content {
+    padding: 1.5rem;
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+  .grid-wrapper { 
+    width: 350px; 
+    height: 350px; 
+  }
+  .grid { 
+    grid-template-columns: repeat(5, 70px); 
+    grid-template-rows: repeat(5, 70px); 
+    width: 350px;
+    height: 350px;
+  }
+  .veleb { 
+    top: 70px; 
+    height: 210px; 
+  }
+  .title { 
+    font-size: 4rem; 
+    top: 175px; 
+  }
+  .modal {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+/* Extra small mobile adjustments */
 @media (max-width: 420px) {
-  .grid-wrapper { width: 300px; height: 300px; }
-  .grid { grid-template-columns: repeat(5, calc(300px / 5)); grid-template-rows: repeat(5, calc(300px / 5)); gap:5px; }
-  .veleb { top: calc(300px / 5); height: calc((300px / 5) * 3); }
-  .title { font-size: 2.6rem; top: calc(300px / 2); }
-  
+  .grid-wrapper { 
+    width: 300px; 
+    height: 300px; 
+  }
+  .grid { 
+    grid-template-columns: repeat(5, 60px); 
+    grid-template-rows: repeat(5, 60px); 
+    width: 300px;
+    height: 300px;
+  }
+  .veleb { 
+    top: 60px; 
+    height: 180px; 
+  }
+  .title { 
+    font-size: 3.2rem; 
+    top: 150px; 
+  }
+  .modal {
+    width: 300px;
+    height: 300px;
+  }
   .modal-content {
     padding: 1rem;
+  }
+  
+  .box span {
+    font-size: 0.8rem;
+  }
+  
+  .box[style*="top2"] span,
+  .box[style*="top3"] span {
+    font-size: 0.7rem;
   }
 }
