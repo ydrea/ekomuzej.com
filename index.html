@@ -8,46 +8,61 @@
     <script src="//unpkg.com/alpinejs" defer></script>
   </head>
   <body>
-    <!-- Overlay for clicking outside modal -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
 
     <div class="c" id="top">
-      <main class="container" x-data="app()">
-        <!-- Content boxes - start blue, reveal to green -->
-        <template x-for="(box, index) in contentBoxes" :key="index">
-          <div
-            class="box"
-            :class="{ 'green': box.revealed }"
-            @click="boxHasAction(box) ? box.action($data) : openModal(box)"
-            x-init="setTimeout(() => { box.revealed = true }, index * 100 + 300)"
-          >
-            <span
-              x-show="box.revealed"
-              x-text="box.dynamicTitle ? 
-    (box.pjat === 'languages' ? currentLanguage : 
-    (currentTheme === 'light' ? themeNames?.light : themeNames?.dark)) 
-    : box.title"
-            ></span>
+      <main class="container" x-data="app()" x-init="init()">
+        <!-- Wrapper holds grid and decorative items (image + title) -->
+        <div class="grid-wrapper">
+          <!-- Velebit image sits behind the central 3x5 area -->
+          <div class="veleb">
+            <img src="velebit_z.jpg" alt="Velebit" />
           </div>
-        </template>
 
-        <!-- Transparent boxes - start blue, reveal to transparent -->
-        <template x-for="(box, index) in transparentBoxes" :key="index">
-          <div
-            class="box"
-            :class="{ 'trans': box.revealed }"
-            x-init="setTimeout(() => { box.revealed = true }, (index + contentBoxes.length) * 100 + 300)"
-          ></div>
-        </template>
+          <!-- Title centered over the image -->
+          <h1 class="title">Ekomuzej</h1>
 
-        <!-- Velebit image and title -->
-        <div class="veleb">
-          <img src="velebit_z.jpg" alt="Velebit" />
+          <!-- 5x5 grid -->
+          <div class="grid" role="grid" aria-label="tile-grid">
+            <!-- Top row: 5 green buttons (explicit areas from top1..top5) -->
+            <template x-for="(box, index) in contentBoxes" :key="index">
+              <div
+                class="box"
+                :class="{ 'green': box.revealed, 'trans': false }"
+                :style="`grid-area: ${box.area};`"
+                @click="boxHasAction(box) ? box.action($data) : openModal(box)"
+                x-init="setTimeout(() => { box.revealed = true }, index * 120 + 300)"
+                role="button"
+                tabindex="0"
+              >
+                <span
+                  x-show="box.revealed"
+                  x-text="box.dynamicTitle
+                    ? (box.pjat === 'languages'
+                        ? (currentLanguage.toUpperCase())
+                        : (currentTheme === 'light' ? themeNames?.light : themeNames?.dark))
+                    : box.title"
+                ></span>
+              </div>
+            </template>
+
+            <!-- Middle 3 rows (15 places) - transparent image tiles -->
+            <template x-for="(box, index) in transparentBoxes" :key="index">
+              <div
+                class="box trans"
+                :style="`grid-area: ${box.area};`"
+                x-init="setTimeout(() => { box.revealed = true }, (contentBoxes.length + index) * 80 + 400)"
+                aria-hidden="true"
+              ></div>
+            </template>
+
+            <!-- Bottom row: the remaining 5 green buttons (areas bottom1..bottom5) -->
+            <!-- Note: contentBoxes already contains these — ordered top-first then bottom -->
+          </div>
         </div>
-        <h1 class="title">Ekomuzej</h1>
 
-        <!-- MODAL INSIDE THE CONTAINER -->
-        <div id="pjatModal" class="modal">
+        <!-- Modal -->
+        <div id="pjatModal" class="modal" aria-hidden="true">
           <div class="modal-content">
             <button class="close-modal" onclick="closeModal()">×</button>
             <div id="modalContent"></div>
@@ -56,9 +71,7 @@
       </main>
     </div>
 
-    <footer class="fut">
-      <!-- cookies & copyright -->
-    </footer>
+    <footer class="fut"></footer>
 
     <script>
       // Simple modal functions
@@ -70,6 +83,7 @@
         contentDiv.innerHTML = content;
         modal.classList.add("active");
         overlay.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
       }
 
       function closeModal() {
@@ -77,13 +91,11 @@
         const overlay = document.getElementById("modalOverlay");
         modal.classList.remove("active");
         overlay.classList.remove("active");
+        modal.setAttribute("aria-hidden", "true");
       }
 
-      // Close modal with Escape key
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-          closeModal();
-        }
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
       });
 
       function app() {
@@ -124,36 +136,36 @@
                 "mobilne aplikacije",
                 "društvene mreže",
                 "jezici",
+                "kontakt",
                 "teme",
                 "o nama",
-                "DEMO",
+                "demo",
                 "usluge",
                 "reference",
-                "kontakt",
               ],
               en: [
-                "about ecomuseum",
+                "about eco-museum",
                 "mobile apps",
                 "social networks",
                 "languages",
+                "contact",
                 "themes",
                 "about us",
-                "DEMO",
+                "demo",
                 "services",
                 "references",
-                "contact",
               ],
               it: [
                 "sull'eco-museo",
                 "app mobili",
-                "social network",
+                "reti sociali",
                 "lingue",
+                "contatto",
                 "temi",
                 "chi siamo",
-                "DEMO",
+                "demo",
                 "offerta",
                 "referenze",
-                "contatto",
               ],
             };
 
@@ -163,56 +175,126 @@
               it: { light: "chiara", dark: "scura" },
             };
 
-            const titles = languageTitles[this.currentLanguage];
+            const titles =
+              languageTitles[this.currentLanguage] || languageTitles.hr;
 
-            this.contentBoxes.forEach((box, index) => {
-              if (!box.dynamicTitle) {
-                box.title = titles[index];
-              }
+            // Assign titles to contentBoxes (10 items)
+            this.contentBoxes.forEach((box, i) => {
+              if (!box.dynamicTitle) box.title = titles[i];
             });
 
-            // Update the current theme name for display
             this.themeNames = themeNames[this.currentLanguage];
           },
+
           boxHasAction(box) {
             return box && typeof box.action === "function";
           },
 
-          //prettier-ignore
+          /* IMPORTANT: contentBoxes order matches fixed grid areas:
+             - first 5 are TOP row (left→right)
+             - last 5 are BOTTOM row (left→right)
+          */
           contentBoxes: [
-      { title: "o ekomuzeju", pjat: "o_ekomuzeju", revealed: false },
-      { title: "mobilne aplikacije", pjat: "mobilne_app", revealed: false },
-      { title: "društvene mreže", pjat: "socials", revealed: false },
-      { 
-        title: "jezici", 
-        action: (component) => component.cycleLanguage(), 
-        revealed: false,
-        dynamicTitle: true,
-        pjat: "languages"
-      },
-      { 
-        title: "teme", 
-        action: (component) => component.toggleTheme(), 
-        revealed: false,
-        dynamicTitle: true 
-      },
-      { title: "o nama", pjat: "onama", revealed: false },
-      { title: "DEMO", pjat: "demo", revealed: false },
-      { title: "usluge", pjat: "ponuda", revealed: false },
-      { title: "reference", pjat: "reference", revealed: false },
-      { title: "kontakt", pjat: "kontakt", revealed: false },
-    ],
-          transparentBoxes: Array(15)
-            .fill()
-            .map(() => ({ revealed: false })),
+            // TOP ROW - original order
+            {
+              title: "o ekomuzeju",
+              pjat: "o_ekomuzeju",
+              revealed: false,
+              area: "top1",
+            },
+            {
+              title: "mobilne aplikacije",
+              pjat: "mobilne_app",
+              revealed: false,
+              area: "top2",
+            },
+            {
+              title: "društvene mreže",
+              pjat: "socials",
+              revealed: false,
+              area: "top3",
+            },
+            {
+              title: "jezici",
+              pjat: "languages",
+              revealed: false,
+              area: "top4",
+              dynamicTitle: true,
+              action: (c) => c.cycleLanguage(),
+            },
+            {
+              title: "kontakt",
+              pjat: "kontakt",
+              revealed: false,
+              area: "top5",
+            },
+
+            // BOTTOM ROW
+            {
+              title: "teme",
+              pjat: "theme",
+              revealed: false,
+              area: "bottom1",
+              dynamicTitle: true,
+              action: (c) => c.toggleTheme(),
+            },
+            {
+              title: "o nama",
+              pjat: "o_nama",
+              revealed: false,
+              area: "bottom2",
+            },
+            {
+              title: "demo",
+              pjat: "demo",
+              revealed: false,
+              area: "bottom3",
+            },
+            {
+              title: "usluge",
+              pjat: "ponuda",
+              revealed: false,
+              area: "bottom4",
+            },
+            {
+              title: "reference",
+              pjat: "reference",
+              revealed: false,
+              area: "bottom5",
+            },
+          ],
+
+          /* 15 middle transparent tiles: mid row2/3/4 positions
+             Order: row2 left→right = mid1..mid5, row3 mid6..mid10, row4 mid11..mid15
+          */
+          transparentBoxes: [
+            { area: "mid1" },
+            { area: "mid2" },
+            { area: "mid3" },
+            { area: "mid4" },
+            { area: "mid5" },
+            { area: "mid6" },
+            { area: "mid7" },
+            { area: "mid8" },
+            { area: "mid9" },
+            { area: "mid10" },
+            { area: "mid11" },
+            { area: "mid12" },
+            { area: "mid13" },
+            { area: "mid14" },
+            { area: "mid15" },
+          ],
 
           async openModal(box) {
             if (!box.revealed) return;
-
-            console.log("Opening modal for:", box.title);
-
-            const content = await this.getPjatContent(box);
-            openModal(content);
+            try {
+              const content = await this.getPjatContent(box);
+              openModal(content);
+            } catch (e) {
+              openModal(
+                `<div class="pjat"><h2>${box.title}</h2><p>Error loading content.</p></div>`
+              );
+            }
           },
 
           async getPjatContent(box) {
@@ -220,23 +302,10 @@
               const response = await fetch(
                 `pjat/${this.currentLanguage}/${box.pjat}.html`
               );
-              if (!response.ok) {
-                throw new Error("File not found");
-              }
-              let content = await response.text();
-              // Add scrollable class only for demo content
-              // if (box.pjat === "demo") {
-              //   content = `<div class="scrollable">${content}</div>`;
-              // }
-              return content;
-            } catch (error) {
-              console.error("Error loading content:", error);
-              return `
-          <div class="pjat">
-            <h2>${box.title}</h2>
-            <p>Content not available in ${this.currentLanguage}</p>
-          </div>
-        `;
+              if (!response.ok) throw new Error("File not found");
+              return await response.text();
+            } catch (err) {
+              return `<div class="pjat"><h2>${box.title}</h2><p>Content not available in ${this.currentLanguage}</p></div>`;
             }
           },
         };

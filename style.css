@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:300,400,500,600&display=swap");
-/* https://fonts.googleapis.com/css?family=Roboto */
 
 :root {
-  /* Color Variables */
   --bg-color: #f5f5f5;
   --text-color: #333;
   --primary-color: #1e40af;
@@ -11,167 +9,174 @@
   --border-color: #ccc;
   --white: #fff;
   --accent-dark: rgb(20, 134, 20);
-  --orange: orange;
 }
 
 [data-theme="dark"] {
-  --bg-color: #333;
-  --text-color: #fff;
-  --primary-color: #3b82f6;
+  --bg-color: #1f2937;
+  --text-color: #f9fafb;
+  --primary-color: #374151;
   --accent-color: #10b981;
-  --modal-bg: #2d2d2d;
-  --border-color: #444;
+  --modal-bg: #374151;
+  --border-color: #4b5563;
+  --white: #f9fafb;
+  --accent-dark: #065f46;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: Arial, sans-serif;
   background-color: var(--bg-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  overflow: hidden;
   color: var(--text-color);
-}
-
-body a {
-  text-decoration: none;
-}
-
-.c {
-  margin: 1em;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  width: 100%;
+  overflow-x: hidden;
+}
+
+.c { width: 100%; display:flex; justify-content:center; align-items:center; padding: 2rem 0; }
+
+/* GRID WRAPPER centers everything and keeps consistent sizing */
+.grid-wrapper {
   position: relative;
-}
-
-.txt {
+  width: 500px;   /* base width for 5x5 of 100px */
+  height: 500px;  /* 5 rows of 100px */
   display: block;
-  margin: 4em;
-  text-align: left;
-  color: var(--accent-color);
-}
-.txt li {
-  list-style-type: square;
-  list-style-position: inside;
 }
 
-h2 {
-  margin-bottom: 1em;
-}
-
+/* Velebit image behind the middle 3 rows - make it wider to match grid */
 .veleb {
   position: absolute;
-  top: 40%;
-  left: .5%;
+  left: 0;
+  top: 100px;          /* starts at row 2 (1 row = 100px) */
+  width: 100%;
+  height: 300px;       /* 3 rows */
   z-index: 0;
+  overflow: hidden;
 }
+
 .veleb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  height: 300px;
-  width: auto;
 }
 
-.container {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(5, 100px);
-  grid-template-rows: repeat(5, 100px);
-  z-index: 2;
-  width: 500px;
-  height: 500px;
-  border: 1px solid var(--border-color);
-}
-
-.container div {
-  aspect-ratio: 1 !important;
-}
-
-.box {
-  background-color: var(--primary-color);
-  color: var(--white);
-  font-size: 1rem;
-  z-index: 2;
-  border: solid 5px var(--bg-color);
-  padding: 0.1em;
-  width: 100px;
-  height: 100px;
-  transition: all 0.6s ease;
-}
-
-.box.green {
-  background-color: var(--accent-dark);
-  padding: 0.3em;
-  cursor: pointer;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  line-height: 1.1;
-}
-
-.box.trans {
-  background-color: transparent;
-  padding: 0.5rem;
-}
-
+/* Title centered horizontally and vertically across the middle area */
 .title {
-  font-family: Arial, sans-serif;
   position: absolute;
-  display: flex;
-  bottom: 35.9%;
-  left: 3.5%;
+  left: 50%;
+  top: 250px; /* center of the 500px wrapper (rows 2-4 middle) */
+  transform: translate(-50%, -50%);
+  margin: 0;
+  z-index: 5;
   font-size: 6.7rem;
   font-weight: 400;
   color: var(--white);
   pointer-events: none;
-  z-index: 5;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.35);
+  white-space: nowrap;
 }
 
-/* Modal styles */
+
+/* Make the grid exactly match the image width */
+.grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(5, 100px);
+  grid-template-rows: repeat(5, 100px);
+  gap: 0; /* Remove gap to make boxes fit exactly */
+  width: 500px;
+  height: 500px;
+}
+
+/* define named areas for readability (not strictly required by inline area assignments) */
+.grid {
+  grid-template-areas:
+    "top1 top2 top3 top4 top5"
+    "mid1 mid2 mid3 mid4 mid5"
+    "mid6 mid7 mid8 mid9 mid10"
+    "mid11 mid12 mid13 mid14 mid15"
+    "bottom1 bottom2 bottom3 bottom4 bottom5";
+}
+
+/* Box base style */
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-radius: 2px;
+  border: 4px solid var(--bg-color);
+  font-size: 1.05rem;
+  transition: transform 0.25s ease, opacity 0.3s ease, background-color 0.25s ease;
+  user-select: none;
+  text-align: center;
+  padding: 0.2rem;
+  line-height: 1.1;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.box span {
+  display: block;
+  max-width: 100%;
+  line-height: 1.1;
+  font-size: 0.9rem;
+}
+
+/* Fix for long text boxes */
+.box[style*="top2"] span,
+.box[style*="top3"] span {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+/* Green actionable boxes */
+.box.green {
+  background-color: var(--accent-dark);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Transparent middle tiles */
+.box.trans {
+  background-color: transparent;
+  border: 4px solid var(--bg-color);
+  box-shadow: none;
+  cursor: default;
+}
+
+/* Modal styles - COVER THE GRID */
+/* Modal styles - COVER ONLY THE GRID */
+/* Modal styles - POSITION RELATIVE TO CONTAINER */
+.container {
+  position: relative; /* This makes the modal position relative to container */
+  /* ... other container styles ... */
+}
+
 .modal {
   display: none;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 500px;  /* Same as grid width */
+  height: 500px; /* Same as grid height */
   background: var(--modal-bg);
   z-index: 100;
   border: 1px solid var(--accent-dark);
 }
-
-.modal.active {
-  display: block;
-}
+.modal.active { display: block; }
 
 .modal-content {
   background: var(--modal-bg);
   padding: 2rem;
   width: 100%;
   height: 100%;
-/* color: var(--text-color); */
   position: relative;
-}
-
-.scrollable {
-  overflow-y: auto;
-  height: 100%;
-}
-
-.modal-content.scrollable {
   overflow-y: auto;
 }
 
@@ -187,22 +192,21 @@ h2 {
   z-index: 101;
 }
 
-/* Overlay styles */
+/* Overlay styles - cover the same area */
 .modal-overlay {
   display: none;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 500px;
+  height: 500px;
   background: rgba(255, 255, 255, 0.5);
   z-index: 99;
 }
+.modal-overlay.active { display: block; }
 
-.modal-overlay.active {
-  display: block;
-}
 
+/* PJAT CONTENT STYLES */
 .pjat {
   color: var(--text-color);
   height: 100%;
@@ -213,6 +217,7 @@ h2 {
 .pjat h2 {
   margin-bottom: 1rem;
   font-size: 1.5rem;
+  color: var(--accent-color);
 }
 
 .pjat p,
@@ -226,83 +231,37 @@ h2 {
   padding-left: 1.5rem;
 }
 
+.pjat a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.pjat a:hover {
+  text-decoration: underline;
+}
+
 .dlogici {
   margin-top: auto;
   text-align: center;
   padding-top: 1rem;
-}
-
-.fut {
-  margin-top: 20px;
   color: var(--accent-color);
 }
 
-.icon-g {
-  filter: invert(15%) sepia(93%) saturate(5846%) hue-rotate(127deg) brightness(105%) contrast(84%);
+/* Responsive adjustments: scale grid down and keep center overlay */
+@media (max-width: 640px) {
+  .grid-wrapper { width: 360px; height: 360px; }
+  .grid { grid-template-columns: repeat(5, calc(360px / 5)); grid-template-rows: repeat(5, calc(360px / 5)); gap:6px; }
+  .veleb { top: calc(360px / 5); height: calc((360px / 5) * 3); }
+  .title { font-size: 3.2rem; top: calc(360px / 2); }
 }
 
-.icon-w {
-  filter: invert(99%) sepia(2%) saturate(49%) hue-rotate(341deg) brightness(117%) contrast(100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 3px;
-}
-
-@media screen and (max-width: 600px) {
-  /* .container {
-    width: 300px;
-    height: 300px;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(5, 60px);
-  } */
-
-  .title {
-    font-size: 3rem;
-    color: var(--text-color);
-    bottom: 25%;
-    left: 0.5%;
-  }
-
-  .veleb {
-    /* display: none; */
-  }
-
-  .box {
-    width: 100px;
-    height: 60px;
-    font-size: 0.8rem;
-  }
-}
-
-@media screen and (max-width: 488px) {
-  .container {
-    width: 200px;
-    height: 400px;
-    grid-template-columns: repeat(2, 100px);
-    grid-template-rows: repeat(8, 50px);
-  }
-
-  .title {
-    font-size: 2.8rem;
-  }
-  .veleb {
-    display: none;
-  }
-
-  .box {
-    width: 100px;
-    height: 50px;
-    font-size: 0.7rem;
-  }
-
+@media (max-width: 420px) {
+  .grid-wrapper { width: 300px; height: 300px; }
+  .grid { grid-template-columns: repeat(5, calc(300px / 5)); grid-template-rows: repeat(5, calc(300px / 5)); gap:5px; }
+  .veleb { top: calc(300px / 5); height: calc((300px / 5) * 3); }
+  .title { font-size: 2.6rem; top: calc(300px / 2); }
+  
   .modal-content {
     padding: 1rem;
-  }
-  
-  .txt {
-    display: block;
-    margin: 2em;
-    text-align: left;
   }
 }
