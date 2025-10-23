@@ -223,7 +223,12 @@
               if (!response.ok) {
                 throw new Error("File not found");
               }
-              return await response.text();
+              let content = await response.text();
+              // Add scrollable class only for demo content
+              // if (box.pjat === "demo") {
+              //   content = `<div class="scrollable">${content}</div>`;
+              // }
+              return content;
             } catch (error) {
               console.error("Error loading content:", error);
               return `
