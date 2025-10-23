@@ -193,18 +193,20 @@ body {
 }
 
 /* Overlay styles - cover the same area */
+
+/* Overlay covers everything */
 .modal-overlay {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 500px;
-  height: 500px;
+  width: 100vw;
+  height: 100vh;
   background: rgba(255, 255, 255, 0.5);
-  z-index: 99;
+  z-index: 99; /* Lower than grid */
+  cursor: pointer;
 }
 .modal-overlay.active { display: block; }
-
 
 /* PJAT CONTENT STYLES */
 .pjat {
