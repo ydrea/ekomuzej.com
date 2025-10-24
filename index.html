@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ekomuzej - web i mobilne aplikacije</title>
-    <link rel="stylesheet" href="astyle.css" />
+    <link rel="stylesheet" href="cstyle.css" />
     <script src="//unpkg.com/alpinejs" defer></script>
   </head>
   <body>
@@ -72,7 +72,50 @@
       </main>
     </div>
 
-    <footer class="fut"></footer>
+    <!-- COOKIE CONSENT - SEPARATE FROM FOOTER -->
+    <div class="cookie-consent" id="cookieConsent">
+      <div class="cookie-content">
+        <p>
+          Ova web stranica koristi kolačiće za poboljšanje korisničkog iskustva.
+          <a href="/politika-kolacica">Saznajte više</a>
+        </p>
+        <div class="cookie-buttons">
+          <button class="cookie-btn accept" onclick="acceptCookies()">
+            Prihvaćam
+          </button>
+          <button class="cookie-btn reject" onclick="rejectCookies()">
+            Odbijam
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER - WILL BE HIDDEN AFTER COOKIE ACCEPTANCE -->
+    <footer class="fut" id="mainFooter">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Privatnost i kolačići</h3>
+          <p>
+            Ova stranica koristi kolačiće za osnovno funkcioniranje. Biranjem
+            "Prihvaćam" pristajete na korištenje kolačića u skladu s našom
+            <a href="/politika-privatnosti">Politikom privatnosti</a>.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>GDPR</h3>
+          <p>
+            U skladu s Općom uredbom o zaštiti podataka (GDPR) osiguravamo
+            zaštitu vaših osobnih podataka. Za više informacija pogledajte našu
+            <a href="/gdpr">GDPR politiku</a>.
+          </p>
+        </div>
+      </div>
+
+      <div class="copyleft">
+        <p>&copy; 2024 Ekomuzej- neka prava pridržana.</p>
+      </div>
+    </footer>
 
     <script>
       // Simple modal functions
@@ -99,6 +142,38 @@
         if (e.key === "Escape") closeModal();
       });
 
+      // Cookie Consent Functions - HIDE FOOTER AFTER ACCEPTING
+      function checkCookieConsent() {
+        const consent = localStorage.getItem("cookieConsent");
+        if (consent === null) {
+          // Show cookie banner if no consent given yet
+          document.getElementById("cookieConsent").classList.add("active");
+        } else {
+          // If consent was already given, HIDE THE FOOTER
+          document.getElementById("mainFooter").style.display = "none";
+        }
+      }
+
+      function acceptCookies() {
+        localStorage.setItem("cookieConsent", "accepted");
+        // Hide both cookie banner AND footer
+        document.getElementById("cookieConsent").classList.remove("active");
+        document.getElementById("mainFooter").style.display = "none";
+      }
+
+      function rejectCookies() {
+        localStorage.setItem("cookieConsent", "rejected");
+        // Hide both cookie banner AND footer
+        document.getElementById("cookieConsent").classList.remove("active");
+        document.getElementById("mainFooter").style.display = "none";
+      }
+
+      // Initialize cookie consent when page loads
+      document.addEventListener("DOMContentLoaded", function () {
+        checkCookieConsent();
+      });
+
+      // Alpine.js application
       function app() {
         return {
           currentTheme: "dark",

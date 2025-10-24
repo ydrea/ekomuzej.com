@@ -300,7 +300,7 @@ h1 {
   text-decoration: underline;
 }
 
-/* Cookie Consent Banner - SIMPLE FIX */
+/* Cookie Consent Banner - WORKING VERSION */
 .cookie-consent {
   position: fixed;
   bottom: -300px; /* Start completely off-screen */
@@ -372,7 +372,22 @@ h1 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* Make sure it works on ALL screen sizes - remove media query conflicts */
+/* Copyright */
+.copyleft {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.copyleft p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Make sure it works on ALL screen sizes */
 @media (max-width: 768px) {
   .cookie-content {
     flex-direction: column;
@@ -416,24 +431,11 @@ h1 {
     height: 450px;
   }
 
-/* @media (max-width: 768px) { */
   .footer-content {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
-  .cookie-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-  
-  .cookie-buttons {
-    justify-content: center;
-  }
 }
-
-
 
 /* Mobile adjustments */
 @media (max-width: 640px) {
