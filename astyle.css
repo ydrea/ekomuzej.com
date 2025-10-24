@@ -69,7 +69,7 @@ body {
 .title {
   font-family: 'Lato', sans-serif;
   position: absolute;
-    left: 7%;
+    left: 25px;  /* center of the 500px wrapper (columns 2-4 middle) */
   top: 192px; /* center of the 500px wrapper (rows 2-4 middle) */
   /* transform: translate(-50%, -50%); */
   margin: 0;
@@ -117,12 +117,10 @@ h1 {
   background-color: var(--bg-color);
   color: var(--text-color);
   border-radius: 2px;
-  /* Combined border: 1px white inner + 3px bg outer */
-  /* border: 1px solid var(--white); */
   outline: 1px solid var(--text-color);
   outline-offset: -2px; /* This makes the outline sit inside */
   font-size: 1.05rem;
-  transition: transform 0.25s ease, opacity 0.3s ease, background-color 0.25s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
   user-select: none;
   text-align: center;
   padding: 0.2rem;
@@ -139,15 +137,15 @@ h1 {
 }
 
 /* Fix for long text boxes */
+.box[style*="top1"] span,
 .box[style*="top2"] span,
 .box[style*="top3"] span {
-  font-size: 0.8rem;
+  /* font-size: 0.75rem; */
   line-height: 1;
 }
 
 /* Green actionable boxes */
 .box.green {
-  /* background-color: var(--white); */
   font-weight: 600;
   cursor: pointer;
 }
@@ -155,20 +153,15 @@ h1 {
 /* Transparent middle tiles */
 .box.trans {
   background-color: transparent;
-  /* border: 4px solid var(--bg-color); */
   box-shadow: none;
   cursor: default;
-  /* outline: 1px solid var(--white);  */
   border: 4px solid transparent;
 }
 
 .box.trans span {
   opacity: 1;
   color: var(--white);
-  /* text-shadow: 0 1px 3px rgba(0,0,0,0.5); */
 }
-
-/* Modal styles - COVER THE GRID */
 /* Modal styles - COVER ONLY THE GRID */
 /* Modal styles - POSITION RELATIVE TO CONTAINER */
 .container {
@@ -285,7 +278,7 @@ h1 {
   }
   .title { 
     font-size: 5.5rem; 
-    top: 225px; 
+    top: 172px; 
     padding: 0.4rem 1.5rem;
   }
   .modal {
@@ -311,8 +304,8 @@ h1 {
     height: 240px; 
   }
   .title { 
-    font-size: 4.8rem; 
-    top: 200px; 
+    font-size: 5rem; 
+    top: 153px; 
     padding: 0.3rem 1.2rem;
   }
   .modal {
@@ -341,8 +334,8 @@ h1 {
     height: 210px; 
   }
   .title { 
-    font-size: 4rem; 
-    top: 175px; 
+    font-size: 4.3rem; 
+    top: 138px; 
     padding: 0.2rem 1rem;
   }
   .modal {
@@ -368,8 +361,8 @@ h1 {
     height: 180px; 
   }
   .title { 
-    font-size: 3.2rem; 
-    top: 150px; 
+    font-size: 3.3rem; 
+    top: 123px; 
     padding: 0.1rem 0.8rem;
   }
   .modal {

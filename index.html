@@ -50,8 +50,9 @@
             <template x-for="(box, index) in transparentBoxes" :key="index">
               <div
                 class="box trans"
+                :class="{ 'trans': box.revealed }"
                 :style="`grid-area: ${box.area};`"
-                x-init="setTimeout(() => { box.revealed = true }, (contentBoxes.length + index) * 80 + 400)"
+                x-init="setTimeout(() => { box.revealed = true }, (contentBoxes.length + index) * 120 + 400)"
                 aria-hidden="true"
               ></div>
             </template>
@@ -268,21 +269,21 @@
              Order: row2 left→right = mid1..mid5, row3 mid6..mid10, row4 mid11..mid15
           */
           transparentBoxes: [
-            { area: "mid1" },
-            { area: "mid2" },
-            { area: "mid3" },
-            { area: "mid4" },
-            { area: "mid5" },
-            { area: "mid6" },
-            { area: "mid7" },
-            { area: "mid8" },
-            { area: "mid9" },
-            { area: "mid10" },
-            { area: "mid11" },
-            { area: "mid12" },
-            { area: "mid13" },
-            { area: "mid14" },
-            { area: "mid15" },
+            { area: "mid1", revealed: false },
+            { area: "mid2", revealed: false },
+            { area: "mid3", revealed: false },
+            { area: "mid4", revealed: false },
+            { area: "mid5", revealed: false },
+            { area: "mid6", revealed: false },
+            { area: "mid7", revealed: false },
+            { area: "mid8", revealed: false },
+            { area: "mid9", revealed: false },
+            { area: "mid10", revealed: false },
+            { area: "mid11", revealed: false },
+            { area: "mid12", revealed: false },
+            { area: "mid13", revealed: false },
+            { area: "mid14", revealed: false },
+            { area: "mid15", revealed: false },
           ],
 
           async openModal(box) {
