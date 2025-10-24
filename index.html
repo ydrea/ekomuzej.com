@@ -52,7 +52,7 @@
                 class="box trans"
                 :class="{ 'trans': box.revealed }"
                 :style="`grid-area: ${box.area};`"
-                x-init="setTimeout(() => { box.revealed = true }, (contentBoxes.length + index) * 120 + 400)"
+                x-init="setTimeout(() => { box.revealed = true }, (contentBoxes.length + index) * 80 + 300)"
                 aria-hidden="true"
               ></div>
             </template>

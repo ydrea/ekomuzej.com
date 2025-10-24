@@ -120,7 +120,7 @@ h1 {
   outline: 1px solid var(--text-color);
   outline-offset: -2px; /* This makes the outline sit inside */
   font-size: 1.05rem;
-  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+  transition: transform 0.2s ease, opacity 0.3s ease, background-color 0.2s ease;
   user-select: none;
   text-align: center;
   padding: 0.2rem;
