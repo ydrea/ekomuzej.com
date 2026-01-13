@@ -1,0 +1,9 @@
+cat > public/_headers << 'EOF'
+/app.apk
+  Content-Type: application/vnd.android.package-archive
+  Cache-Control: public, max-age=3600
+  Content-Disposition: attachment; filename="jarunALPHA.apk"
+
+/index.html
+  Cache-Control: public, max-age=3600
+EOF
