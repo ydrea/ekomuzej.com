@@ -66,7 +66,7 @@ body {
 /* Title centered horizontally and vertically across the middle area */
 .title {
   position: absolute;
-  left: 51%;
+  left: 55%;
   top: 240px; /* center of the 500px wrapper (rows 2-4 middle) */
   transform: translate(-51%, -49%);
   margin: 0;
