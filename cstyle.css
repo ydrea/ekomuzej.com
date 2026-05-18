@@ -71,9 +71,7 @@ body {
 .title {
   font-family: 'Lato', sans-serif;
   position: absolute;
-    left: 32px;    top: 187px;
-  /* transform: translate(-50%, -50%); */
-  /* margin: 0 5px 5px 0; */
+    left: 32px;    top: 188px;
   z-index: 5;
   font-size: 6.6rem;
   font-weight: 300 !important;
