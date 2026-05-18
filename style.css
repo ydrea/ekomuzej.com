@@ -67,8 +67,8 @@ body {
 .title {
   position: absolute;
   left: 55em;
-  top: 240px; /* center of the 500px wrapper (rows 2-4 middle) */
-  transform: translate(-51%, -49%);
+  top: 250px; /* center of the 500px wrapper (rows 2-4 middle) */
+  transform: translate(-50%, -50%);
   margin: 0;
   z-index: 5;
   font-size: 6.6rem;
