@@ -1,3 +1,4 @@
+/* cstyle.css - Custom styles for Ekomuzej website */
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:300,400,500,600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
@@ -70,21 +71,21 @@ body {
 .title {
   font-family: 'Lato', sans-serif;
   position: absolute;
-    left: 25px;  /* center of the 500px wrapper (columns 2-4 middle) */
-  top: 192px; /* center of the 500px wrapper (rows 2-4 middle) */
+    left: 32px;    top: 189px;
   /* transform: translate(-50%, -50%); */
-  margin: 0;
+  /* margin: 0 5px 5px 0; */
   z-index: 5;
-  font-size: 6.7rem;
+  font-size: 6.6rem;
   font-weight: 300 !important;
   font-kerning: auto;
   color: var(--white);
   pointer-events: none;
   white-space: nowrap;
+  letter-spacing: -.001em;
 }
 h1 {
-  -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
-  -webkit-text-stroke: 1px var(--white); /* White outline */
+  -webkit-text-fill-color: transparent; 
+    -webkit-text-stroke: 1px var(--white); /* White outline */
 }
 
 
