@@ -71,7 +71,7 @@ body {
   transform: translate(-51%, -49%);
   margin: 0;
   z-index: 5;
-  font-size: 6.7rem;
+  font-size: 6.6rem;
   font-weight: 300;
   color: var(--white);
   pointer-events: none;
