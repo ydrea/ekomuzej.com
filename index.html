@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
     <!-- SEO: -->
     <meta
       name="description"
-      content="EKOMUZEJ - Augmented Reality aplikacija za otoke. Preuzmi APK za Android."
+      content="EKOMUZEJ - Augmented Reality aplikacija za otoke. Preuzmi .apk datoteku za Android."
     />
     <meta
       name="keywords"
@@ -43,7 +43,7 @@
           </div>
 
           <!-- Title centered over the image -->
-          <h1 class="title">Ekomuzej</h1>
+          <h1 class="title">EkoMuzej</h1>
 
           <!-- 5x5 grid -->
           <div class="grid" role="grid" aria-label="tile-grid">
@@ -136,7 +136,7 @@
       </div>
 
       <div class="copyleft">
-        <p>&copy; 2024 Ekomuzej- neka prava pridržana.</p>
+        <p>&copy; 2026 EkoMuzej - neka prava pridržana.</p>
       </div>
     </footer>
 
@@ -207,7 +207,7 @@
             this.updateBoxTitles();
             document.documentElement.setAttribute(
               "data-theme",
-              this.currentTheme
+              this.currentTheme,
             );
           },
 
@@ -216,7 +216,7 @@
               this.currentTheme === "light" ? "dark" : "light";
             document.documentElement.setAttribute(
               "data-theme",
-              this.currentTheme
+              this.currentTheme,
             );
           },
 
@@ -391,7 +391,7 @@
               openModal(content);
             } catch (e) {
               openModal(
-                `<div class="pjat"><h2>${box.title}</h2><p>Error loading content.</p></div>`
+                `<div class="pjat"><h2>${box.title}</h2><p>Error loading content.</p></div>`,
               );
             }
           },
@@ -399,7 +399,7 @@
           async getPjatContent(box) {
             try {
               const response = await fetch(
-                `pjat/${this.currentLanguage}/${box.pjat}.html`
+                `pjat/${this.currentLanguage}/${box.pjat}.html`,
               );
               if (!response.ok) throw new Error("File not found");
               return await response.text();
